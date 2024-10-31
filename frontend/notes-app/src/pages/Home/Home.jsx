@@ -54,11 +54,7 @@ const Home = () => {
   // Get user info
   const getUserInfo = async () => {
     try {
-      const response = await axiosInstance.get("/get-user", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axiosInstance.get("/get-user");
       if (response.data && response.data.user) {
         setUserInfo(response.data.user);
       }
@@ -73,11 +69,7 @@ const Home = () => {
   // Get all notes of user
   const getAllNotes = async () => {
     try {
-      const response = await axiosInstance.get("/get-all-notes", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axiosInstance.get("/get-all-notes");
 
       if (response.data && response.data.notes) {
         setAllNotes(response.data.notes);
@@ -92,11 +84,7 @@ const Home = () => {
   const deleteNote = async (data) => {
     const nodeId = data._id;
     try {
-      const response = await axiosInstance.delete("/delete-note/" + nodeId, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axiosInstance.delete("/delete-note/" + nodeId);
 
       if (response.data && !response.data.error) {
         showToastMessage("Note deleted successfully", "delete");

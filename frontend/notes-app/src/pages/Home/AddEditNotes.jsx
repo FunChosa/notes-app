@@ -18,19 +18,11 @@ const AddEditNotes = ({
   // Add note
   const addNewNote = async () => {
     try {
-      const response = await axiosInstance.post(
-        "/add-note",
-        {
-          title,
-          content,
-          tags,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const response = await axiosInstance.post("/add-note", {
+        title,
+        content,
+        tags,
+      });
 
       if (response.data && response.data.note) {
         showToastMessage("Note added successfully");
@@ -51,19 +43,11 @@ const AddEditNotes = ({
   const editNote = async () => {
     const nodeId = noteData._id;
     try {
-      const response = await axiosInstance.put(
-        "/edit-note/" + nodeId,
-        {
-          title,
-          content,
-          tags,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const response = await axiosInstance.put("/edit-note/" + nodeId, {
+        title,
+        content,
+        tags,
+      });
 
       if (response.data && response.data.note) {
         showToastMessage("Note updated successfully");
