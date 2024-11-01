@@ -41,9 +41,9 @@ const AddEditNotes = ({
   };
   // Edit note
   const editNote = async () => {
-    const nodeId = noteData._id;
+    const noteId = noteData._id;
     try {
-      const response = await axiosInstance.put("/edit-note/" + nodeId, {
+      const response = await axiosInstance.put("/edit-note/" + noteId, {
         title,
         content,
         tags,
